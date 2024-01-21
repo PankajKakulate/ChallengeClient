@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MarvellousService } from './marvellous.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,14 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'Client';
+  message:any;
+  
+  constructor(private obj:MarvellousService)
+  {}
+
+  ngOnInit(){
+      this.obj.getBatches().subscribe(data=>{
+        this.message=data;
+      });
+    }
 }
